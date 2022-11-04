@@ -35,7 +35,7 @@ fn menu(){
         match opt { 
             1 => variable::var_menu(),
             2 => function::fun_menu(),   
-            3 => (),
+            3 => control_flow::control_flow_menu(),
             // 3 => vector(),
             // 4 => hashMap(),
             other => break
