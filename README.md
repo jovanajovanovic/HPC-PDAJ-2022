@@ -1,6 +1,8 @@
 # HPC-PDAJ-2022
+
 Predmet: Paralelne i distribuirane arhitekture i jezici
-Smer: : Računarstvo visokih performansi
+</br>
+Smer: Računarstvo visokih performansi
 
 
 <p> Gradivo </p>
