@@ -1,5 +1,9 @@
 use std::any::type_name;
 use std::io;
+
+const READ_LINE_ERROR: &str = "Greska prilikom citanja podataka";
+const PARSE_STRING_TO_INT_ERROR: &str = "Molimo vas unesite broj";
+
 //funkcija za dodredjivanje tipa promenljive
 fn type_of<T>(_: T) -> &'static str {
    type_name::<T>()
@@ -8,19 +12,21 @@ fn type_of<T>(_: T) -> &'static str {
 pub fn var_menu(){
     loop  {
         let mut option: String = String::new();
-        println!("Meni");
+        println!("==================================================");
+        println!("Meni - promenljive i tipovi podataka");
         println!("1 - Tipovi podataka");
         println!("2 - Nepromenljive, promenljive i konstante");
         println!("3 - Preklapanje promenljive");
         println!("4 - Preklapanje promenljive vs mut promenjljiva");
         println!("0 - Glavni meni");
+        println!("__________________________________________________");
 
         // kod za unos podataka 
         io::stdin()
         .read_line(&mut option)
-        .expect("Greska prilikom citanja podataka"); 
+        .expect(READ_LINE_ERROR); 
 
-        let opt:i32 = option.trim().parse().expect("Unesena vrednost ne moze da se pretvori u broj.");
+        let opt:i32 = option.trim().parse().expect(PARSE_STRING_TO_INT_ERROR);
 
         match opt { 
             1 => def_variable(),
@@ -33,11 +39,15 @@ pub fn var_menu(){
 }
 
 fn def_variable(){
+    println!("----------------------------------------------------");
+    println!("Tipovi podataka");
+    println!("Tabela sa primerima koji sve tipovi podataka postoje");
 
     // definisanje promenljive    
-    //ukoliko je vrednost promenljive unapred poznata onda ne mora, a i moze da se navode njen tip
+    //ukoliko je vrednost promenljive unapred poznata onda ne mora, a i moze da se navede njen tip
     let a = 3; 
-    let x: i32 = 234;
+    let x: i32 = 234; 
+    let u: u32 = 167;
     let f = 2.0;
     let f32: f32 = 2.4; //navedemo tip zato sto je podrazumevan tip f64;
     let s: String = String::from("hello");
@@ -50,12 +60,12 @@ fn def_variable(){
     let b = false;
 
 
-    println!("==============================");
     //ispis tipova promenljivih
     println!("{0: <30} | {1: <10}", "vrednost", "tip");
     println!("----------------------------------------");
     println!("{0: <30} | {1: <10}", a, type_of(a));
     println!("{0: <30} | {1: <10}", x, type_of(x));
+    println!("{0: <30} | {1: <10}", u, type_of(u));
     println!("{0: <30} | {1: <10}", f, type_of(f));
     println!("{0: <30} | {1: <10}", f32, type_of(f32));
     print!("{0: <30} | ", s);
@@ -64,11 +74,13 @@ fn def_variable(){
     println!("{0: <30} | {1: <10}", c, type_of(c));
     println!("{0: <30}| {1: <10}", smile, type_of(smile));
     println!("{0: <30} | {1: <10}", b, type_of(b));    
-    println!("==============================");
 
 }
 
 fn let_mut_const(){
+    println!("----------------------------------------------------");
+    println!("LET, MUT, CONST PROMENLJIVE");
+  
     let x = 80; 
 
     // x = x + 1; // ovo NE MOZE, posto su promenljive podrazumevano nepromenljive (ovo ce biti zakomentarisano posto se kod nece kompajlirati zbog ovoga)
@@ -81,26 +93,29 @@ fn let_mut_const(){
     let mut num = String::new();
     io::stdin()
     .read_line(&mut num)
-    .expect("Greska prilikom citanja podataka."); 
+    .expect(READ_LINE_ERROR); 
 
-    let n:i32 = num.trim().parse().expect("Uneseni podatak ne moze da se pretvori u int");
+    let n:i32 = num.trim().parse().expect(PARSE_STRING_TO_INT_ERROR);
     println!("y = {y}");
-    println!("y + {} = {}", n, y + n);
+    y = y + n;
+    println!("y + {} = {}", n, y);
 
 
     // const -> konstante, njihova vrednost ne moze da se menja i uvek mora da se navede tip
-    const c: i32 = 3 + 89; 
-    println!("const c -> {c}");
+    const C: i32 = 3 + 89; 
+    println!("const c -> {C}");
 
 }
 
 fn var_shadowing(){
     // preklapanje promenljivih je dozvoljeno -> definisanje promenljive sa istim imenom vise puta
-
+    println!("----------------------------------------------------");
+    println!("PREKLAPANJE PROMENLJIVIH");
+  
     let x = 45;
 
 
-    let x = x + 1; // videli smo malo pre da x = x + 1; nije dozvoljeno
+    let x = x + 1; // videli ste da x = x + 1; nije dozvoljeno
                    // a ovo iznad moze, zato sto koristimo let pa je ovo zapravo definisanje nove x promenljive
                    // stara x promenljiva ovde prestaje da vazi
 
@@ -114,6 +129,9 @@ fn var_shadowing(){
 } 
 
 fn var_shadowing_vs_mut(){
+    println!("----------------------------------------------------");
+    println!("PREKLAPANJE PROMENLJIVIH VS MUT PROMENLJIVE");
+  
     let s = "hello";
     println!("s = {s}");
 

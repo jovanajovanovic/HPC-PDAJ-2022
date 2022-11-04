@@ -19,26 +19,28 @@ fn menu(){
         println!("1 - Promenljive");
         println!("2 - Funkcije");
         println!("3 - Kontrole toka");
-        println!("4 - HashMap-a");
+        // println!("4 - Slozeni tipovi podataka");
+        // println!("4 - HashMap-a");
         println!("0 - Izlaz iz programa");
 
         // kod za unos podataka 
         io::stdin()
         .read_line(&mut option) // funkcija koja cita jednu liniju i onda procitanu liniju ubaci u promenljivu option
                                 // option - prosledjena kao mut referenca da bi read_line funkcija mogla da menja vrednost promenljive
-        .expect("Failed to read line"); // obrada greske, ako se ona desi u toku citanja podataka koje je korisnik uneo
+        .expect("Greska prilikom citanja podataka"); // obrada greske, ako se ona desi u toku citanja podataka koje je korisnik uneo
 
-        //podatke koje korisnik unese su string, a posto hocu da opcije budu brojevi onda je u sledecoj liniji odradjena konverzija String->int
-        let opt:i32 = option.trim().parse().expect("Could not parse to int");
+        //podaci koje korisnik unese su string, a posto su opcije brojevi onda je u sledecoj liniji odradjena konverzija String->int
+        let opt:i32 = option.trim().parse().expect("Molimo vas unesite broj.");
 
-        // match -> switch u drugim jezicima, sa other ili _ umesto default statementa
+        // match -> switch u drugim jezicima, sa _other ili _ umesto default statementa
         match opt { 
             1 => variable::var_menu(),
             2 => function::fun_menu(),   
             3 => control_flow::control_flow_menu(),
+            // 4 => compound_type::compound_type_menu(),
             // 3 => vector(),
             // 4 => hashMap(),
-            other => break
+            _other => break
         }
     }
 }

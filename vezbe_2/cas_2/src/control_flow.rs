@@ -1,7 +1,13 @@
 //posto cemo koristiti funkciju za random brojeve onda prvo moramo da importujemo biblioteku rand:
 // 1. u sekciju dependencies u Cargo.toml fajl dodati ime i verziju biblioteke
 // 2. importovati biblioteku tamo gde zelite da je koristite upotrebom use sintakse
-use rand:Rng; // Rng - interfejs u kojem je importovana metoda za generisanje random brojeva
+use rand::Rng; // Rng - interfejs u kojem je importovana metoda za generisanje random brojeva
+use std::io;
+
+
+const READ_LINE_ERROR: &str = "Greska prilikom citanja podataka";
+const PARSE_STRING_TO_INT_ERROR: &str = "Molimo vas unesite broj.";
+
 pub fn control_flow_menu(){
     // ova konstrukcija je vec koriscena na vise mesta
     // loop - petlja koja se izvrsava beskonacno puta, moze da bude prekinuta sa CTRL+C ili upotrebom break
@@ -12,14 +18,15 @@ pub fn control_flow_menu(){
         println!("Meni - kontrole toka i petlje");
         println!("1 - if");
         println!("2 - while");
+        println!("3 - for");
         println!("0 - Glavni meni");
-        println!("__________________________________________________")
+        println!("__________________________________________________");
         // kod za unos podataka 
         io::stdin()
         .read_line(&mut option)
-        .expect("Greska prilikom citanja podataka"); 
+        .expect(READ_LINE_ERROR); 
 
-        let opt:i32 = option.trim().parse().expect("Unesena vrednost ne moze da se pretvori u broj.");
+        let opt:i32 = option.trim().parse().expect(PARSE_STRING_TO_INT_ERROR);
 
         match opt { 
             1 => if_stmt(),
@@ -40,11 +47,11 @@ fn if_stmt(){
                                                           // start..=end => 1..=30 (u ovom ovde primeru ce biti generisani brojevi od 1 do 30)
 
     if rand_num % 2 == 0 {
-        println!("Prost broj {rand_num} je deljiv sa 2.");
+        println!("Broj {rand_num} je deljiv sa 2.");
     }else if rand_num % 5 == 0{
-        println!("Prost broj {rand_num} je deljiv sa 5.");
+        println!("Broj {rand_num} je deljiv sa 5.");
     }else {
-        println!("Prost broj {rand_num} nije deljiv ni sa 2 a ni sa 5.");
+        println!("Broj {rand_num} nije deljiv ni sa 2 a ni sa 5.");
     }
 }
 
@@ -55,8 +62,8 @@ fn while_stmt(){
     println!("Sabiranje prvih 30 brojeva");
     let mut sum = 0;
     let mut counter = 1;
-    const: i32 = 30;
-    while counter < const {
+    const LIMIT: i32 = 30;
+    while counter < LIMIT {
         sum += counter;
         counter += 1;
     }
@@ -77,7 +84,7 @@ fn for_stmt(){
     println!("----------------------------------------------------");
     println!("Parni brojevi prve stotine");
     // primer 2: ispisati sve parne brojeve prve stotine 
-    for num in (1..99) {
+    for num in 1..100 {
         if num % 2 == 0 {
             println!("{num}");
         }
@@ -86,7 +93,7 @@ fn for_stmt(){
     println!("Brojevi prve desetice u obrnutom redosledu");
 
     //primer 3: ispisati brojeve prve desetice u obrnutom redosledu
-    for n in (1..9).rev() {
+    for n in (1..10).rev() { // end=10, zato sto se ne ukljucuje taj broj u opseg
         println!("{n}");
     }
 }
