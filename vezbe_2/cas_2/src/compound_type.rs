@@ -1,4 +1,6 @@
 use std::io;
+mod array;
+mod tuple;
 
 const READ_LINE_ERROR: &str = "Greska prilikom citanja podataka";
 const PARSE_STRING_TO_INT_ERROR: &str = "Unesena vrednost ne moze da se pretvori u broj.";
@@ -22,8 +24,8 @@ pub fn compound_type_menu(){
         let opt:i32 = option.trim().parse().expect(PARSE_STRING_TO_INT_ERROR);
 
         match opt { 
-            1 => compound_type_tuple::tuple_menu(),
-            2 => compound_type_array::array_menu(),
+            1 => array::array_menu(),
+            2 => tuple::tuple_menu(),
             _other => break
         }
     }
