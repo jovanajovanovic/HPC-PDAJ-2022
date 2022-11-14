@@ -2,6 +2,7 @@ mod variable;
 mod function;
 mod control_flow;
 mod compound_type;
+mod collection;
 use std::io;
 ///
 /// Projekat u kojem su dati primeri vezani za drugi termin vezbe iz predmeta Paralelne i distribuirane arhitekture i jezici. 
@@ -9,7 +10,7 @@ use std::io;
 /// 1. unos podataka putem konzole
 /// 2. deklarisanje promenljivih
 /// 3. tipovi podataka
-/// 4. strukture podataka [vektor, hash map] 
+/// 4. kolekcije podataka [vektor, hash map] 
 
 /// Funkcija za ispis meni-a, izborom neke stavke menia bice prikazana demonstracija odredjene teme. 
 
@@ -21,7 +22,7 @@ fn menu(){
         println!("2 - Funkcije");
         println!("3 - Kontrole toka");
         println!("4 - Slozeni tipovi podataka");
-        // println!("4 - HashMap-a");
+        println!("5 - Kolekcije podataka");
         println!("0 - Izlaz iz programa");
 
         // kod za unos podataka 
@@ -39,8 +40,7 @@ fn menu(){
             2 => function::fun_menu(),   
             3 => control_flow::control_flow_menu(),
             4 => compound_type::compound_type_menu(),
-            // 3 => vector(),
-            // 4 => hashMap(),
+            5 => collection::collection_menu(),
             _other => break
         }
     }
