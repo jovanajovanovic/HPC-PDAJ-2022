@@ -74,7 +74,7 @@ fn insert_elem_in_map(map: &mut HashMap<String, String>){
     
     // 3. unos novog elementa ukoliko ne postoji element sa prosledjenim kljucem 
     // ovaj princip cemo ovde koristiti
-    // map.entry(key).or_insert(line);
+    map.entry(key).or_insert(line);
     
 }
 
