@@ -1,4 +1,4 @@
-mod vector;
+pub mod vector;
 mod hashMap;
 use std::{io, hash};
 const READ_LINE_ERROR: &str = "Greska prilikom citanja podataka";

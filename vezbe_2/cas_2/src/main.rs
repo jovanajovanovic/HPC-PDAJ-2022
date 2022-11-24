@@ -2,7 +2,7 @@ mod variable;
 mod function;
 mod control_flow;
 mod compound_type;
-mod collection;
+pub mod collection;
 use std::io;
 ///
 /// Projekat u kojem su dati primeri vezani za drugi termin vezbe iz predmeta Paralelne i distribuirane arhitekture i jezici. 
@@ -39,8 +39,8 @@ fn menu(){
             1 => variable::var_menu(),
             2 => function::fun_menu(),   
             3 => control_flow::control_flow_menu(),
-            4 => compound_type::compound_type_menu(),
-            5 => collection::collection_menu(),
+            4 => compound_type::compound_type_menu(), //relativna putanja
+            5 => crate::collection::collection_menu(),//apsolutna putanja
             _other => break
         }
     }

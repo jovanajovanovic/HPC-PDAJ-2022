@@ -1,10 +1,11 @@
 use std::io;
 pub fn vector(){
     // za razliku od niza vektori su dinamicki, 
-
     //definisanje vektora
     let mut v: Vec<i32> = Vec::new(); // prazan vektor
-
+    // crate::collection::collection_menu(); //apsolutna putanja
+    // collection::collection_menu;
+    // super::super::menu();
     //pr. korisnik ce da unese elemente vektora
     println!("-------------------------------------");
     println!("Vektor");

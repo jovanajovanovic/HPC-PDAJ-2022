@@ -1,0 +1,1 @@
+/home/jovana/Desktop/HPC-PDAJ-2022/vezbe_6/priprema/target/debug/priprema: /home/jovana/Desktop/HPC-PDAJ-2022/vezbe_6/priprema/src/binary_tree.rs /home/jovana/Desktop/HPC-PDAJ-2022/vezbe_6/priprema/src/linked_list.rs /home/jovana/Desktop/HPC-PDAJ-2022/vezbe_6/priprema/src/linked_list_2.rs /home/jovana/Desktop/HPC-PDAJ-2022/vezbe_6/priprema/src/main.rs
